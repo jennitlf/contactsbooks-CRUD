@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres
+    container_name: contactsbook
+    restart: always
+    ports:
+      - "5434:5432"
+    volumes:
+       - .docker/dbdata:/var/lib/postgresql/data
+    env_file:
+        .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
