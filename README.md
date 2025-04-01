@@ -34,7 +34,7 @@ cd backend/
 ### 3. Instale as dependências
 
 ```bash
-npm instal
+npm install
 ```
 
 ### 4. Crie um arquivo .env
