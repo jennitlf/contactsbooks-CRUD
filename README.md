@@ -47,12 +47,20 @@ No subdiretório backend, crie um arquivo .env e configure as seguintes variáve
 docker compose up --build -d
 docker ps
 ```
-### 6. Iniciar a aplicação NestJs
+
+### 6. Rodar as migrations
+
+```bash
+npx ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:run -d src/database/orm-cli-config.ts
+```
+
+### 7. Iniciar a aplicação NestJs
 
 ```bash
 npm run start:dev
 ```
-### 7. Navegue até o subdiretório frontend
+
+### 8. Navegue até o subdiretório frontend
 
 ```bash
 cd ..
@@ -62,7 +70,13 @@ cd ..
 cd frontend/
 ```
 
-### 8. Iniciar aplicação ReactJs
+### 10. Instalar as dependências
+
+```bash
+npm install
+```
+
+### 10. Iniciar aplicação ReactJs
 
 ```bash
 npm start
