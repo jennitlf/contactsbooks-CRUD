@@ -5,7 +5,6 @@ import "./newContact.css"
 
 function NewContact(props) {
 
-  const { id } = useParams();
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [phone, setPhone] = useState("");
@@ -13,43 +12,10 @@ function NewContact(props) {
   const [addressFull, setAddressFull] = useState({});
 
   const [initialPosition, setInitialPosition] = useState({ lat: -3.130033, lng: -60.023464 });
-
-  async function getData() {
-    try {
-      const response = await fetch(`http://localhost:3010/contacts/${id}`);
-      if (!response.ok) {
-        throw new Error('Erro ao carregar dados do contato');
-      }
-      const data = await response.json();
-
-      setName(data.name);
-
-      setType(data.type);
-
-      setPhone(data.number);
-
-      setAddress(data.address);
-
-      setInitialPosition({ lat: parseFloat(data.latitude), lng: parseFloat(data.longitude) });
-
-    } catch (error) {
-      console.error('Erro ao carregar detalhes do contato:', error);
-    }
-  }
-
-  useEffect(  () => {
-    if (id) {
-      getData();
-    }
-   }, [])
-
-
-
-
+  console.log(addressFull)
 //=============================form submission================================
   const save = async (e) => {
     e.preventDefault();
-
       const form = {
         name: name,
         type: type,
@@ -58,12 +24,9 @@ function NewContact(props) {
         latitude: addressFull.lat.toString(),
         longitude: addressFull.lng.toString(),
       }
-
-      console.log(addressFull, "oi", form)
-
       try {
-        const response = await fetch(id ? `http://localhost:3010/contacts/${id}`:'http://localhost:3010/contacts', {
-          method: id ? `PUT`: 'POST',
+        const response = await fetch('http://localhost:3010/contacts', {
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json'
         },
@@ -72,18 +35,12 @@ function NewContact(props) {
         if (!response.ok) {
           window.alert("Erro ao salvar contato")
         }else{
-          if(id){
-            window.alert('Contato alterado com sucesso!')
-          }else{
             window.alert('Contato salvo com sucesso!')
-          }
-          window.location.href = 'http://localhost:3000/'
-
+            window.location.href = 'http://localhost:3000/'
         }
       }catch(error) {
         console.error(error)
       }
-
   };
 
   return (
@@ -103,10 +60,10 @@ function NewContact(props) {
         }}
         />
         <label htmlFor="address">Endereço</label>
-        <input className="form-input" id="addressInput" type="text" value={id ? address: addressFull.address} name="address" placeholder="Selecione movendo o marcador no mapa" onChange={(e)=> setAddress(e.target.value)} disabled />
+        <input className="form-input" id="addressInput" type="text" value={addressFull.address} name="address" placeholder="Selecione movendo o marcador no mapa" onChange={(e)=> setAddress(e.target.value)} disabled />
         <div className="controls-create">
           <Link to={`/`}><button className="return"><i className="fa-solid fa-arrow-left"></i></button></Link>
-          <button className="save" type="submit" onClick={save}><i className="fa-solid fa-cloud"></i></button>
+          <button className="save" type="submit" onClick={save}><i className="fa-solid fa-cloud save"></i></button>
         </div>
       </form>
       <div className="maps">
