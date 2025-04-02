@@ -70,7 +70,6 @@ const ContactList = ({searchTerm}) => {
               <div className="container-button-contact">
               <Link to={`/details/${contact.id}`} className="route-details" >
               <button className="details">
-                {/* <i className="fa-solid fa-circle-info"></i> */}
                 <span class="material-symbols-outlined" translate="false">info</span>
               </button>
               </Link>

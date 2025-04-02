@@ -2,7 +2,7 @@
 .content {
   margin: 20px 0 0 0;
   width: 100%;
-  height: 420px;
+  height: 550px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,7 @@
   padding: 0;
   margin: 0 auto 0 auto;
   width: 580px;
-  height: 350px;
+  height: 440px;
   display: flex;
   flex-direction: column;
   justify-content:baseline;
@@ -27,7 +27,7 @@
   border-radius: 1em;
   padding: 0;
   width: 460px;
-  height: 50px;
+  height: 65px;
   display: flex;
   justify-content:baseline;
   align-items: center;
@@ -36,12 +36,17 @@
   font-style: normal;
   padding-left: 30px;
   color: rgb(33, 54, 54);
-
 }
 
 .container-name-contact{
   margin-left: 5%;
-  width: 60%;
+  width: 65%;
+  height: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size:15px;
+
 }
 .icon-name{
   margin-right: 2%;
@@ -53,6 +58,7 @@
   cursor: pointer;
 }
 .contact a {
+  text-decoration: none;
   height: 70%;
   width: 15%;
   margin-right: 10%;

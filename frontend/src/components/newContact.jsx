@@ -90,11 +90,18 @@ function NewContact(props) {
     <div className="new-contact">
       <form className="form" method="GET">
         <label htmlFor="name">Nome</label>
-        <input className="form-input" type="text" name="name" id="nameInput" value={name} maxLength={35} onChange={(e)=> setName(e.target.value) } />
+        <input className="form-input" type="text" name="name" id="nameInput" value={name} maxLength={25} onChange={(e)=> setName(e.target.value) } />
         <label htmlFor="type">Tipo</label>
-        <input className="form-input" type="text" name="type" id="typeInput" value={type} onChange={(e)=> setType(e.target.value)} />
+        <input className="form-input" type="text" name="type" id="typeInput" value={type} maxLength={20} onChange={(e)=> setType(e.target.value)} />
         <label htmlFor="phone" >Número</label>
-        <input className="form-input" type="number" name="phone" id="phone" value={phone} maxLength={14} onChange={(e)=> setPhone(e.target.value)} />
+        <input className="form-input" type="number" name="phone" id="phone" value={phone} maxLength={14}
+        onChange={(e) => {
+          const value = e.target.value.replace(/\D/g, "");
+          if (value.length <= 14) {
+            setPhone(value);
+          }
+        }}
+        />
         <label htmlFor="address">Endereço</label>
         <input className="form-input" id="addressInput" type="text" value={id ? address: addressFull.address} name="address" placeholder="Selecione movendo o marcador no mapa" onChange={(e)=> setAddress(e.target.value)} disabled />
         <div className="controls-create">

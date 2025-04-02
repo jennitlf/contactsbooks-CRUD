@@ -1,7 +1,7 @@
 .App {
   background-color: #e1f2f2;
   width: 1000px;
-	height: 712px;
+	height: 752px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 1em;
@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 /* search field*/
@@ -30,7 +30,6 @@
   align-items: center;
   border: 0.1px solid #575a59;
   border-radius: 0.5em;
-
 }
 
 .search-container input {
@@ -173,7 +172,7 @@
     width: 70%;
   }
 }
-@media(max-width:333px){
+@media(max-width:325px){
  .App{
   display: none;
  }

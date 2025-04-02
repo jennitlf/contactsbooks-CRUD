@@ -51,8 +51,14 @@ function ContactDetails(props) {
   return(
     <div className="details" >
       <div id="name" className="datails-contact" >
-        <i className="fa-solid fa-user icon-name-details"></i>
-        {contactDetails.name} </div>
+        <div className="name-div1">
+          <div className="name-div1-box-1">
+            <i className="fa-solid fa-user icon-name-details"></i>
+          </div>
+          <div className="name-div1-box-2">
+            {contactDetails.name} </div>
+          </div>
+        </div>
       <div id="number" className="datails-contact" >
         <i className="fa-solid fa-phone"></i>
         {contactDetails.number} </div>
@@ -60,12 +66,16 @@ function ContactDetails(props) {
         <i className="fa-solid fa-message"></i>
         {contactDetails.type} </div>
       <div id="address" className="datails-contact">
-        <i className="fa-sharp fa-solid fa-location-dot"></i>
-        {contactDetails.address} </div>
+        <div className="address-div1">
+          <i className="fa-sharp fa-solid fa-location-dot"></i>
+          {contactDetails.address} </div>
+        </div>
         <div className="controls">
-          <Link to={`/`}> <button> <i className="fa-solid fa-arrow-left"></i> </button> </Link>
-          <Link to={`/edit/${contactDetails.id}`} > <button> <i className="fa-solid fa-pen-to-square"></i> </button> </Link>
-          <Link> <button type="button" onClick={()=>{del(contactDetails.name, contactDetails.id)}} > <i className="fa-solid fa-trash"></i> </button> </Link>
+          <div className="controls-div1">
+            <Link to={`/`}> <button> <i className="fa-solid fa-arrow-left"></i> </button> </Link>
+            <Link to={`/edit/${contactDetails.id}`} > <button> <i className="fa-solid fa-pen-to-square"></i> </button> </Link>
+            <Link> <button type="button" onClick={()=>{del(contactDetails.name, contactDetails.id)}} > <i className="fa-solid fa-trash"></i> </button> </Link>
+          </div>
         </div>
     </div>
   )
