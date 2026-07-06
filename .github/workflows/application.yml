@@ -1,0 +1,37 @@
+name: Application CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  application:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Subir PostgreSQL
+        working-directory: backend
+        run: docker compose up --build -d
+
+      - name: Instalar dependências do Backend
+        working-directory: backend
+        run: npm ci
+
+      - name: Executar Migrations
+        working-directory: backend
+        run: npm run migration:run
+
+      - name: Iniciar Backend
+        working-directory: backend
+        run: |
+          npm run start:dev &

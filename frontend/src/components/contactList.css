@@ -21,6 +21,14 @@
   align-items: center;
 
 }
+.empty-message{
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  font-size: 16px;
+  font-style: italic;
+   list-style: none;
+}
 .contact {
   background-color: #87c2c2;
   margin-bottom: 8px;

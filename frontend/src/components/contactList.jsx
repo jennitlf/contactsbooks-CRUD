@@ -59,28 +59,47 @@ const ContactList = ({searchTerm}) => {
     }
   };
 
-  return(
-      <div className="content">
-        <ul id="list" >
-          {currentItems.map(contact => (
-            <li className="contact" key={contact.id} >
-              <i className="fa-solid fa-user icon-name" ></i>
-              <div className="container-name-contact">{contact.name}</div>
+  return (
+  <div className="content">
 
-              <div className="container-button-contact">
-              <Link to={`/details/${contact.id}`} className="route-details" >
-              <button className="details">
-                <span class="material-symbols-outlined" translate="false">info</span>
-              </button>
+    <ul id="list">
+
+      {currentItems.length === 0 ? (
+        <div className="empty-message">
+          Nenhum contato encontrado
+        </div>
+      ) : (
+        currentItems.map(contact => (
+          <li className="contact" key={contact.id}>
+            <i className="fa-solid fa-user icon-name"></i>
+
+            <div className="container-name-contact">
+              {contact.name}
+            </div>
+
+            <div className="container-button-contact">
+              <Link to={`/details/${contact.id}`} className="route-details">
+                <button className="details">
+                  <span className="material-symbols-outlined" translate="false">
+                    info
+                  </span>
+                </button>
               </Link>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <ButtonPage currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-      </div>
+            </div>
+          </li>
+        ))
+      )}
 
-    )
+    </ul>
+
+    <ButtonPage
+      currentPage={currentPage}
+      totalPages={totalPages}
+      onPageChange={handlePageChange}
+    />
+
+  </div>
+);
 
 }
 

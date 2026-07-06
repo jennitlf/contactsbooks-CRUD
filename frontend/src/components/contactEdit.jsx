@@ -76,9 +76,9 @@ function ContactEdit() {
   return (
     <div className="new-contact">
       <form className="form" method="GET">
-        <label htmlFor="name">Nome</label>
+        <label htmlFor="nameInput">Nome</label>
         <input className="form-input" type="text" name="name" id="nameInput" value={name} maxLength={25} onChange={(e)=> setName(e.target.value) } />
-        <label htmlFor="type">Tipo</label>
+        <label htmlFor="typeInput">Tipo</label>
         <input className="form-input" type="text" name="type" id="typeInput" value={type} maxLength={20} onChange={(e)=> setType(e.target.value)} />
         <label htmlFor="phone" >Número</label>
         <input className="form-input" type="number" name="phone" id="phone" value={phone} maxLength={14}
@@ -89,11 +89,11 @@ function ContactEdit() {
           }
         }}
         />
-        <label htmlFor="address">Endereço</label>
+        <label htmlFor="addressInput">Endereço</label>
         <input className="form-input" id="addressInput" type="text" value={addressFull.address} name="address" placeholder="Selecione movendo o marcador no mapa" onChange={(e)=> setAddress(e.target.value)} disabled />
         <div className="controls-create">
-          <Link to={`/`}><button className="return"><i className="fa-solid fa-arrow-left"></i></button></Link>
-          <button className="save" type="submit" onClick={save}><i className="fa-solid fa-cloud save"></i></button>
+          <Link to={`/`}><button className="return"><i aria-label="Voltar" className="fa-solid fa-arrow-left"></i></button></Link>
+          <button className="save" aria-label="Salvar" type="submit" onClick={save}><i className="fa-solid fa-cloud save"></i></button>
         </div>
       </form>
       <div className="maps">

@@ -1,12 +1,12 @@
 services:
   db:
-    image: postgres
+    image: postgres:18
     container_name: contactsbook
     restart: always
     ports:
       - "5434:5432"
     volumes:
-       - .docker/dbdata:/var/lib/postgresql/data
+       - .docker/postgresql:/var/lib/postgresql
     env_file:
         .env
     environment:
